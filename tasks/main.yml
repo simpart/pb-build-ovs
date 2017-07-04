@@ -1,0 +1,16 @@
+
+- name: install rdo repository
+  yum: name=https://www.rdoproject.org/repos/rdo-release.rpm
+
+- name: install latest version of ovs
+  yum: name=openvswitch
+       state=latest
+
+- name: start ovs
+  become: yes
+  command: systemctl start openvswitch
+
+- name: enable ovs
+  become: yes
+  command: systemctl enable openvswitch
+
